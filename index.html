@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Holo Geometrics</title>
+  <link rel="stylesheet" href="./style.css">
+  <script src='https://unpkg.co/gsap@3/dist/gsap.min.js'></script>
+  <script type="module" src="./script.js"></script>  
+</head>
+<body>
+<svg class="canvas" viewBox="0 0 200 200">
+  <defs>
+    <linearGradient id="black" gradientTransform="rotate(90)">
+      <stop offset="0" stop-color="#0000" />
+      <stop offset="0.49" stop-color="#0000" />
+      <stop offset="0.5" stop-color="#1f272f" />
+      <stop offset="1" stop-color="#1f272f" />
+    </linearGradient>
+    <linearGradient id="purple" gradientTransform="rotate(90)">
+      <stop offset="0" stop-color="#fc00ff" />
+      <stop offset="1" stop-color="#00dbde" />
+    </linearGradient>
+    <linearGradient id="pink" gradientTransform="rotate(90)">
+      <stop offset="0" stop-color="#c26fdd" />
+      <stop offset="1" stop-color="#f0bd50" />
+    </linearGradient>
+    <linearGradient id="blue" gradientTransform="rotate(90)">
+      <stop offset="0" stop-color="#4ff0ea" />
+      <stop offset="1" stop-color="#683df0" />
+    </linearGradient>
+
+    <filter id="noise2" x="-100" y="-100" width="400" height="400">
+      <feTurbulence type="fractalNoise" baseFrequency="5" numOctaves="3" stitchTiles="stitch" />
+      <feDisplacementMap in="SourceGraphic" scale="800" xChannelSelector="R" yChannelSelector="G" />
+    </filter>
+
+    <filter id="noiseHeavy" x="-50" y="-50" width="300" height="300">
+      <feTurbulence id="freq" type="fractalNoise" baseFrequency="0.7" numOctaves="0.1" stitchTiles="stitch" />
+      <feDisplacementMap in="SourceGraphic" scale="170" xChannelSelector="G" yChannelSelector="G" />
+    </filter>
+    <mask id="maskedHeavyNoise">
+      <rect cx="0" cy="0" width="200" height="200" fill="white" filter="url(#noiseHeavy)"></rect>
+    </mask>
+
+    <filter id="noise" x="-50" y="-50" width="300" height="300">
+      <feTurbulence type="fractalNoise" baseFrequency="3" numOctaves="3" stitchTiles="stitch" />
+      <feDisplacementMap in="SourceGraphic" scale="300" xChannelSelector="G" yChannelSelector="G" />
+    </filter>
+    <mask id="maskedNoise">
+      <rect cx="0" cy="0" width="200" height="200" fill="white" filter="url(#noise)"></rect>
+    </mask>
+  </defs>
+</svg>
+
+<button class="refresh" data-content="next pls">next pls</button> 
+  
+</body>
+</html>
